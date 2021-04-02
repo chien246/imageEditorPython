@@ -1,4 +1,4 @@
-from tkinter import Frame, Button, LEFT
+from tkinter import Frame, Button, LEFT, X, BOTTOM, RIGHT, TOP
 from tkinter import filedialog
 from filterFrame import FilterFrame
 from adjustFrame import AdjustFrame
@@ -28,14 +28,14 @@ class EditBar(Frame):
         self.adjust_button.bind("<ButtonRelease>", self.adjust_button_released)
         self.clear_button.bind("<ButtonRelease>", self.clear_button_released)
 
-        self.new_button.pack(side=LEFT)
-        self.save_button.pack(side=LEFT)
-        self.save_as_button.pack(side=LEFT)
-        self.draw_button.pack(side=LEFT)
-        self.crop_button.pack(side=LEFT)
-        self.filter_button.pack(side=LEFT)
-        self.adjust_button.pack(side=LEFT)
-        self.clear_button.pack()
+        self.new_button.pack(side=TOP,fill=X)
+        self.save_button.pack(side=TOP,fill=X)
+        self.save_as_button.pack(side=TOP,fill=X)
+        self.draw_button.pack(side=TOP,fill=X)
+        self.crop_button.pack(side=TOP,fill=X)
+        self.filter_button.pack(side=TOP,fill=X)
+        self.adjust_button.pack(side=TOP,fill=X)
+        self.clear_button.pack(side=BOTTOM,fill=X)
 
     def new_button_released(self, event):
         if self.winfo_containing(event.x_root, event.y_root) == self.new_button:
