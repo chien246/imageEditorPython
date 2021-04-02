@@ -26,13 +26,15 @@ class AdjustFrame(Toplevel):
         self.b_scale = Scale(self, from_=-100, to_=100, length=250, resolution=1,
                              orient=HORIZONTAL)
         self.apply_button = Button(self, text="Apply")
-        self.preview_button = Button(self, text="Preview")
         self.cancel_button = Button(self, text="Cancel")
 
         self.brightness_scale.set(1)
 
         self.apply_button.bind("<ButtonRelease>", self.apply_button_released)
-        self.preview_button.bind("<ButtonRelease>", self.show_button_release)
+        self.brightness_scale.bind("<ButtonRelease>", self.show_button_release)
+        self.r_scale.bind("<ButtonRelease>", self.show_button_release)
+        self.g_scale.bind("<ButtonRelease>", self.show_button_release)
+        self.b_scale.bind("<ButtonRelease>", self.show_button_release)
         self.cancel_button.bind("<ButtonRelease>", self.cancel_button_released)
 
         self.brightness_label.pack()
@@ -44,7 +46,6 @@ class AdjustFrame(Toplevel):
         self.b_label.pack()
         self.b_scale.pack()
         self.cancel_button.pack(side=RIGHT)
-        self.preview_button.pack(side=RIGHT)
         self.apply_button.pack()
 
     def apply_button_released(self, event):
