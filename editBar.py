@@ -45,7 +45,9 @@ class EditBar(Frame):
                 self.master.image_viewer.deactivate_crop()
 
             filename = filedialog.askopenfilename()
-            image = cv2.imread(filename)
+            #path = "i1.jpg"
+            image = cv2.imread(filename, cv2.IMREAD_COLOR)
+            print(image)
 
             if image is not None:
                 self.master.filename = filename
