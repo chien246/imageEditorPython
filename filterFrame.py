@@ -85,7 +85,6 @@ class FilterFrame(Toplevel):
         kernel = np.array([[0.272, 0.534, 0.131],
                            [0.349, 0.686, 0.168],
                            [0.393, 0.769, 0.189]])
-
         self.filtered_image = cv2.filter2D(self.original_image, -1, kernel)
 
     def emboss(self):
