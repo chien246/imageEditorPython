@@ -35,7 +35,7 @@ class EditBar(Frame):
         self.crop_button.pack(side=TOP,fill=X)
         self.filter_button.pack(side=TOP,fill=X)
         self.adjust_button.pack(side=TOP,fill=X)
-        self.clear_button.pack(side=BOTTOM,fill=X)
+        self.clear_button.pack(side=TOP,fill=X)
 
     def new_button_released(self, event):
         if self.winfo_containing(event.x_root, event.y_root) == self.new_button:
