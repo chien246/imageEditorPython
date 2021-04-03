@@ -1,5 +1,6 @@
 from tkinter import Frame, Button, LEFT, X, BOTTOM, RIGHT, TOP
 from tkinter import filedialog
+from tkinter import *
 from filterFrame import FilterFrame
 from adjustFrame import AdjustFrame
 import cv2
@@ -10,14 +11,29 @@ class EditBar(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master=master)
 
-        self.new_button = Button(self, text="New")
-        self.save_button = Button(self, text="Save")
-        self.save_as_button = Button(self, text="Save As")
-        self.draw_button = Button(self, text="Draw")
-        self.crop_button = Button(self, text="Crop")
-        self.filter_button = Button(self, text="Filter")
-        self.adjust_button = Button(self, text="Adjust")
-        self.clear_button = Button(self, text="Clear")
+        self.new_icon = PhotoImage(file="new.png")
+        self.new_icon = self.new_icon.subsample(15, 15)
+        self.save_icon = PhotoImage(file="save.png")
+        self.save_icon = self.save_icon.subsample(15, 15)
+        self.crop_icon = PhotoImage(file="crop.png")
+        self.crop_icon = self.crop_icon.subsample(15, 15)
+        self.draw_icon = PhotoImage(file="draw.png")
+        self.draw_icon = self.draw_icon.subsample(25,25)
+        self.adjust_icon = PhotoImage(file="adjust.png")
+        self.adjust_icon = self.adjust_icon.subsample(15, 15)
+        self.filter_icon = PhotoImage(file="filter.png")
+        self.filter_icon = self.filter_icon.subsample(15, 15)
+        self.clear_icon = PhotoImage(file="clear.png")
+        self.clear_icon = self.clear_icon.subsample(15, 15)
+
+        self.new_button = Button(self, text="New",image=self.new_icon,compound=RIGHT)
+        self.save_button = Button(self, text="Save",image=self.save_icon,compound=RIGHT)
+        self.save_as_button = Button(self, text="Save As",image=self.save_icon,compound=RIGHT)
+        self.draw_button = Button(self, text="Draw",image=self.draw_icon,compound=RIGHT)
+        self.crop_button = Button(self, text="Crop",image=self.crop_icon,compound=RIGHT)
+        self.filter_button = Button(self, text="Filter",image=self.filter_icon,compound=RIGHT)
+        self.adjust_button = Button(self, text="Adjust",image=self.adjust_icon,compound=RIGHT)
+        self.clear_button = Button(self, text="Clear",image=self.clear_icon,compound=RIGHT)
 
         self.new_button.bind("<ButtonRelease>", self.new_button_released)
         self.save_button.bind("<ButtonRelease>", self.save_button_released)
@@ -45,7 +61,6 @@ class EditBar(Frame):
                 self.master.image_viewer.deactivate_crop()
 
             filename = filedialog.askopenfilename()
-            #path = "i1.jpg"
             image = cv2.imread(filename, cv2.IMREAD_COLOR)
             print(image)
 
