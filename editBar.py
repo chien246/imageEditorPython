@@ -9,7 +9,7 @@ import cv2
 class EditBar(Frame):
 
     def __init__(self, master=None):
-        Frame.__init__(self, master=master)
+        Frame.__init__(self, master=master,bg="#EED5D2")
 
         self.new_icon = PhotoImage(file="icon/new.png")
         self.new_icon = self.new_icon.subsample(15, 15)
@@ -26,14 +26,14 @@ class EditBar(Frame):
         self.clear_icon = PhotoImage(file="icon/clear.png")
         self.clear_icon = self.clear_icon.subsample(15, 15)
 
-        self.new_button = Button(self, text="New",image=self.new_icon,compound=LEFT,anchor="w")
-        self.save_button = Button(self, text="Save",image=self.save_icon,compound=LEFT,anchor="w")
-        self.save_as_button = Button(self, text="Save As",image=self.save_icon,compound=LEFT,anchor="w")
-        self.draw_button = Button(self, text="Draw",image=self.draw_icon,compound=LEFT,anchor="w")
-        self.crop_button = Button(self, text="Crop",image=self.crop_icon,compound=LEFT,anchor="w")
-        self.filter_button = Button(self, text="Filter",image=self.filter_icon,compound=LEFT,anchor="w")
-        self.adjust_button = Button(self, text="Adjust",image=self.adjust_icon,compound=LEFT,anchor="w")
-        self.clear_button = Button(self, text="Clear",image=self.clear_icon,compound=LEFT,anchor="w")
+        self.new_button = Button(self, text="New",image=self.new_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
+        self.save_button = Button(self, text="Save",image=self.save_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
+        self.save_as_button = Button(self, text="Save As",image=self.save_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
+        self.draw_button = Button(self, text="Draw",image=self.draw_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
+        self.crop_button = Button(self, text="Crop",image=self.crop_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
+        self.filter_button = Button(self, text="Filter",image=self.filter_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
+        self.adjust_button = Button(self, text="Adjust",image=self.adjust_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
+        self.clear_button = Button(self, text="Clear",image=self.clear_icon,compound=LEFT,anchor="w",bg="#CDB7B5")
 
         self.new_button.bind("<ButtonRelease>", self.new_button_released)
         self.save_button.bind("<ButtonRelease>", self.save_button_released)
@@ -44,14 +44,14 @@ class EditBar(Frame):
         self.adjust_button.bind("<ButtonRelease>", self.adjust_button_released)
         self.clear_button.bind("<ButtonRelease>", self.clear_button_released)
 
-        self.new_button.pack(side=TOP,fill=X)
-        self.save_button.pack(side=TOP,fill=X)
-        self.save_as_button.pack(side=TOP,fill=X)
-        self.draw_button.pack(side=TOP,fill=X)
-        self.crop_button.pack(side=TOP,fill=X)
-        self.filter_button.pack(side=TOP,fill=X)
-        self.adjust_button.pack(side=TOP,fill=X)
-        self.clear_button.pack(side=TOP,fill=X)
+        self.new_button.pack(side=TOP,fill=X,padx=20,pady=5)
+        self.save_button.pack(side=TOP,fill=X,padx=20,pady=5)
+        self.save_as_button.pack(side=TOP,fill=X,padx=20,pady=5)
+        self.draw_button.pack(side=TOP,fill=X,padx=20,pady=5)
+        self.crop_button.pack(side=TOP,fill=X,padx=20,pady=5)
+        self.filter_button.pack(side=TOP,fill=X,padx=20,pady=5)
+        self.adjust_button.pack(side=TOP,fill=X,padx=20,pady=5)
+        self.clear_button.pack(side=TOP,fill=X,padx=20,pady=5)
 
     def new_button_released(self, event):
         if self.winfo_containing(event.x_root, event.y_root) == self.new_button:
