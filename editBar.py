@@ -28,7 +28,6 @@ class EditBar(Frame):
 
         self.new_button = Button(self, text="New",image=self.new_icon,compound=LEFT,anchor="w",bg="#fff")
         self.save_button = Button(self, text="Save",image=self.save_icon,compound=LEFT,anchor="w",bg="#fff")
-        self.save_as_button = Button(self, text="Save As",image=self.save_icon,compound=LEFT,anchor="w",bg="#fff")
         self.draw_button = Button(self, text="Draw",image=self.draw_icon,compound=LEFT,anchor="w",bg="#fff")
         self.crop_button = Button(self, text="Crop",image=self.crop_icon,compound=LEFT,anchor="w",bg="#fff")
         self.filter_button = Button(self, text="Filter",image=self.filter_icon,compound=LEFT,anchor="w",bg="#fff")
@@ -37,7 +36,6 @@ class EditBar(Frame):
 
         self.new_button.bind("<ButtonRelease>", self.new_button_released)
         self.save_button.bind("<ButtonRelease>", self.save_button_released)
-        self.save_as_button.bind("<ButtonRelease>", self.save_as_button_released)
         self.draw_button.bind("<ButtonRelease>", self.draw_button_released)
         self.crop_button.bind("<ButtonRelease>", self.crop_button_released)
         self.filter_button.bind("<ButtonRelease>", self.filter_button_released)
@@ -46,7 +44,6 @@ class EditBar(Frame):
 
         self.new_button.pack(side=TOP,fill=X,padx=20,pady=(250,5))
         self.save_button.pack(side=TOP,fill=X,padx=20,pady=5)
-        self.save_as_button.pack(side=TOP,fill=X,padx=20,pady=5)
         self.draw_button.pack(side=TOP,fill=X,padx=20,pady=5)
         self.crop_button.pack(side=TOP,fill=X,padx=20,pady=5)
         self.filter_button.pack(side=TOP,fill=X,padx=20,pady=5)
@@ -62,7 +59,6 @@ class EditBar(Frame):
 
             filename = filedialog.askopenfilename()
             image = cv2.imread(filename, cv2.IMREAD_COLOR)
-            print(image)
 
             if image is not None:
                 self.master.filename = filename
@@ -83,23 +79,7 @@ class EditBar(Frame):
                 image_filename = self.master.filename
                 cv2.imwrite(image_filename, save_image)
 
-    def save_as_button_released(self, event):
-        if self.winfo_containing(event.x_root, event.y_root) == self.save_as_button:
-            if self.master.is_image_selected:
-                if self.master.is_draw_state:
-                    self.master.image_viewer.deactivate_draw()
-                if self.master.is_crop_state:
-                    self.master.image_viewer.deactivate_crop()
-
-                original_file_type = self.master.filename.split('.')[-1]
-                filename = filedialog.asksaveasfilename()
-                filename = filename + "." + original_file_type
-
-                save_image = self.master.processed_image
-                cv2.imwrite(filename, save_image)
-
-                self.master.filename = filename
-
+   
     def draw_button_released(self, event):
         if self.winfo_containing(event.x_root, event.y_root) == self.draw_button:
             if self.master.is_image_selected:
